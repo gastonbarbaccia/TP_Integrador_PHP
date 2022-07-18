@@ -31,7 +31,7 @@ if($tipo_archivo == "image/jpeg"){
         $archivo_timestamp = $timestamp.'_'.$filename;
         
         $dir=opendir($directorio); //Abrimos el directorio de destino
-        $target_path = $directorio.'/'.$timestamp.'_'.$filename; //Indicamos la ruta de destino, así como el nombre del archivo
+        $target_path = $directorio.$timestamp.'_'.$filename; //Indicamos la ruta de destino, así como el nombre del archivo
         
         //Movemos y validamos que el archivo se haya cargado correctamente
         //El primer campo es el origen y el segundo el destino
@@ -57,7 +57,7 @@ $imagen = $archivo['ruta_imagen'];
 
 unlink($imagen);
 
-$actualizar = $mysqli->query("UPDATE productos SET producto='$producto', cantidad='$cantidad',precio ='$precio', ruta_imagen ='imagenes/$archivo_timestamp' WHERE id='$id'");
+$actualizar = $mysqli->query("UPDATE productos SET producto='$producto', cantidad='$cantidad',precio ='$precio', ruta_imagen ='$target_path' WHERE id='$id'");
 
 header('Location: index.php');
 

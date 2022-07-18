@@ -34,7 +34,7 @@ if($tipo_archivo == "image/jpeg"){
         $archivo_timestamp = $timestamp.'_'.$filename;
         
         $dir=opendir($directorio); //Abrimos el directorio de destino
-        $target_path = $directorio.'/'.$timestamp.'_'.$filename; //Indicamos la ruta de destino, así como el nombre del archivo
+        $target_path = $directorio.$timestamp.'_'.$filename; //Indicamos la ruta de destino, así como el nombre del archivo
         
         //Movemos y validamos que el archivo se haya cargado correctamente
         //El primer campo es el origen y el segundo el destino
@@ -53,7 +53,7 @@ if($tipo_archivo == "image/jpeg"){
 $mysqli = conexiondb();
 
 // Se ejecuta el insert en la tabla usuarios y se guarda el resultado en la variable guardar.
-$guardar = $mysqli->query("INSERT INTO productos (producto,cantidad,precio,ruta_imagen) VALUES ('$producto','$cantidad','$precio','imagenes/$archivo_timestamp')");
+$guardar = $mysqli->query("INSERT INTO productos (producto,cantidad,precio,ruta_imagen) VALUES ('$producto','$cantidad','$precio','$target_path')");
 
 // Esta funcion sirve para hacer una redireccion hacia una pagina, en este caso queres que luego de guardar
 // sea redireccionado el usuario al index para ver el nuevo registro
