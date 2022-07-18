@@ -8,9 +8,9 @@ function conexiondb(){
 	$username = "root";
 	$password = "";
 	$database = "control_stock";
-*/
+	*/
 
-	$localhost = "localhost";
+	$localhost = "212.107.19.2";
 	$username = "u463129590_curso_php";
 	$password = "Inicio1234.";
 	$database = "u463129590_curso_php";
