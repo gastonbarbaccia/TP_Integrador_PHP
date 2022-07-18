@@ -150,7 +150,7 @@ $resultado = $mysqli->query("SELECT * FROM productos");
                   <td style="font-size: 14px;padding-top:2%;"><?php echo $filas['cantidad'] ?></td>
                   <td style="font-size: 14px;padding-top:2%;">$ <?php echo $filas['precio'] ?></td>
                   <?php
-                  if ($filas['ruta_imagen'] != '') {
+                  if ($filas['ruta_imagen'] != 'imagenes/') {
                   ?>
                     <td style="font-size: 14px;"><a href="<?php echo $filas['ruta_imagen'] ?>" target="blank"><img src="<?php echo $filas['ruta_imagen'] ?>" width="50" height="50"></a></td>
                   <?php
