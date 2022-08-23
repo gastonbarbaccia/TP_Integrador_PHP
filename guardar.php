@@ -2,17 +2,16 @@
 // Se incluye el archivo donde esta la funcion
 include "conexiondb.php";
 
-
 // Se guardan los datos de los inputs de form nuevo.php en una variable por cada input para poder 
 // usarlos despues
 $producto = $_POST['producto'];
 $cantidad = $_POST['cantidad'];
 $precio = $_POST['precio'];
 
-
+//Recibimos el archivo enviado desde el formulario y del archivo obtemeos el nombre y el tipo
 $nombre_archivo = $_FILES["archivo"]["name"];
 $tipo_archivo = $_FILES["archivo"]["type"];
-$tamano_archivo = $_FILES["archivo"]["size"];
+
 
 
 if($tipo_archivo == "image/jpeg"){
@@ -28,9 +27,10 @@ if($tipo_archivo == "image/jpeg"){
             mkdir($directorio, 0777) or die("No se puede crear el directorio de extracci&oacute;n");	
         }
 
+        date_default_timezone_set('America/Argentina/Buenos_Aires');
         //Obtenemos la fecha y hora para agregarle al archivo para poder diferenciarlo si se suben 2 archivos con el mismo nombre
         $fecha = new DateTime();
-        $timestamp = $fecha->getTimestamp();
+        $timestamp = $fecha->format('dmYHis');
         $archivo_timestamp = $timestamp.'_'.$filename;
         
         $dir=opendir($directorio); //Abrimos el directorio de destino
@@ -52,8 +52,8 @@ if($tipo_archivo == "image/jpeg"){
 // Se estable la conexion y se la guarda en una variable para poder usarla
 $mysqli = conexiondb();
 
-// Se ejecuta el insert en la tabla usuarios y se guarda el resultado en la variable guardar.
-$guardar = $mysqli->query("INSERT INTO productos (producto,cantidad,precio,ruta_imagen) VALUES ('$producto','$cantidad','$precio','$target_path')");
+// Se ejecuta el insert en la tabla productos 
+$mysqli->query("INSERT INTO productos (producto,cantidad,precio,ruta_imagen) VALUES ('$producto','$cantidad','$precio','$target_path')");
 
 // Esta funcion sirve para hacer una redireccion hacia una pagina, en este caso queres que luego de guardar
 // sea redireccionado el usuario al index para ver el nuevo registro
