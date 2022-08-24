@@ -136,7 +136,7 @@
 						 <div class="form-group row">
              <label for="staticEmail" class="col-sm-ggb col-form-label">Imagen</label>
 							<div class="col-sm-3">
-								<input type="file" class="form-control-ggb form-control" id="archivo" name="archivo">
+								<input type="file" class="form-control-ggb form-control" id="archivo" name="archivo" accept="image/jpeg">
 							</div>
 						</div>
              <div class="card-tools">
